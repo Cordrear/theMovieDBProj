@@ -1,0 +1,34 @@
+.hello {
+    color: lime;
+    background-color: black;
+    text-align: center;
+    user-select: none;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    .circle {
+        border-radius: 10%;
+    }
+}
+
+.btn {
+    align-items: center;
+    background: rgba(255, 255, 255, 0);
+    border: 2px solid #e94112;
+    display: flex;
+    font-weight: 600;
+    letter-spacing: 0.035em;
+    margin: 15px 0;
+    padding: 14px 25px;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+    &:hover {
+        background: #e94112;
+        color: #fff;
+    }
+    a:hover {
+        color: #000;
+    }
+}
