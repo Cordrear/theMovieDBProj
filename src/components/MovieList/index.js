@@ -9,23 +9,34 @@ class MovieList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			//movies: []
-		}
-	};
+			movies: [],
+			allGenres: [],
+		};
+	}
 
-	componentDidMount() {
-		const movies = API.movies.getPopular();
-		const allGenres = API.getGenres();
+	async componentDidMount() {
+		const dataMovies = await API.movies.getPopular();
+		const movies = dataMovies.results;
+
+		const dataAllGenres = await API.getGenres();
+		const allGenres = dataAllGenres.genres;
+
+		console.log('componentDidMount movies', movies);
+		console.log('componentDidMount allGenres', allGenres);
+
+		this.setState({
+			movies,
+			allGenres,
+		});
 	}
 
 	render() {
-		return(
+		return (
 			<div>
-		      <MovieListItem movie=movies.results[0] allGenres=allGenres/>
-		      /*<MovieListItem alt="poster" title="very very very very very very 
-		        very very very very very very very very very very very very 
-		        very very very very long title" genres="genre1 genre2" />*/
-		    </div>
+				{this.state.movies.length != 0 && (
+					<MovieListItem movie={this.state.movies[0]} allGenres={this.state.allGenres} />
+				)}
+			</div>
 		);
 	}
 }

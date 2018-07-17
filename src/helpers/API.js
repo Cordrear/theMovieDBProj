@@ -7,34 +7,35 @@ const API = {
 			return request('/movie/' + id + '?');
 		},
 		getRecomendations: (id) => {
-			return request('/movie/' + id + '/recommendations?')
-		}
+			return request('/movie/' + id + '/recommendations?');
+		},
 	},
 	getGenres: () => {
 		return request('/genre/movie/list?');
 	},
 	search: (query, page = 1) => {
 		return request('/search/movie?query=' + query + '&page=' + page + '&');
-	}
-}
+	},
+};
 
-const URL = "https://api.themoviedb.org/3";
-const API_KEY = "d376b1449bc67048fe304e600c11fb06";
+const URL = 'https://api.themoviedb.org/3';
+const API_KEY = 'd376b1449bc67048fe304e600c11fb06';
 
 const request = (req) => {
-	var data = "{}";
-	var xhr = new XMLHttpRequest();
-	xhr.addEventListener("readystatechange", function () {
-	  if (this.readyState === this.DONE) {
-	    return JSON.parse(this.responseText);
-	  }
+	return new Promise((resolve, reject) => {
+		var data = '{}';
+		var xhr = new XMLHttpRequest();
+		xhr.addEventListener('readystatechange', function() {
+			if (this.readyState === this.DONE) {
+				resolve(JSON.parse(this.responseText));
+			}
+		});
+		xhr.open('GET', URL + req + 'language=ru&api_key=' + API_KEY, true);
+		xhr.send(data);
 	});
-	xhr.open("GET", URL + req + "language=ru&api_key=" + API_KEY);
-	xhr.send(data);
-}
+};
 
 export default API;
-
 
 /*
 //all genres
