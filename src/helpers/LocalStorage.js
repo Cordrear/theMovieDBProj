@@ -1,4 +1,21 @@
-const LocalStorage = {
+class LocalStorage {
+	get(key) {
+		return window.localStorage.getItem(key);
+	}
+	set(key, value) {
+		window.localStorage.setItem(key, value);
+	}
+	isEmpty(key) {
+		return window.localStorage.getItem(key) ? false : true;
+	}
+	toggle(key, value) {
+		if (!this.isEmpty(key)) {
+			//
+		}
+	}
+}
+
+/*const LocalStorage = {
 	parse: (key) => {
 		if (LocalStorage.getItem(key) != null)
 		 return LocalStorage.getItem(key).split(',');
@@ -18,4 +35,4 @@ const LocalStorage = {
 		}
 		localStorage.setItem(key, LS.join(','));
 	}
-}
+}*/
