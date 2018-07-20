@@ -33,12 +33,19 @@ class MovieList extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.movies.length != 0 && (
-					<MovieListItem movie={this.state.movies[0]} allGenres={this.state.allGenres} />
-				)}
+				{this.state.movies.map((item, index) => 
+					<MovieListItem movie={item} allGenres={this.state.allGenres} key={index} />)}	
 			</div>
 		);
 	}
 }
 
 export default MovieList;
+
+/*
+const List = props => (
+  <ul>
+    {props.items.map((item, index) => <li key={item + index}>{item}</li>)}
+  </ul>
+);
+*/
