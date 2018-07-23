@@ -5,6 +5,8 @@ import Button from '../Button';
 
 import API from '../../helpers/API';
 
+const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+
 const MovieListItem = (props) => {
 	const { movie, allGenres } = props;
 	console.log('MovieListItem allGenres', allGenres);
@@ -28,7 +30,7 @@ const MovieListItem = (props) => {
 
 	return (
 		<article className="movie-list-item">
-			<img className="img" src={movie.poster_path} alt={movie.title} />
+			<img className="img" src={IMG_URL + movie.poster_path} alt={movie.title} />
 			<div className="info">
 				<h3 className="title">{movie.title}</h3>
 				<p className="genres">{convertedGenres}</p>
