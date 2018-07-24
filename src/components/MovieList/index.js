@@ -21,9 +21,6 @@ class MovieList extends React.Component {
 		const dataAllGenres = await API.getGenres();
 		const allGenres = dataAllGenres.genres;
 
-		console.log('componentDidMount movies', movies);
-		console.log('componentDidMount allGenres', allGenres);
-
 		this.setState({
 			movies,
 			allGenres,
