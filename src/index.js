@@ -8,8 +8,10 @@ import './style.less';
 
 const App = () => {
   return (
-    //
-    <MovieList />
+    <div>
+    	
+    	<MovieList />
+    </div>
   );
 };
 

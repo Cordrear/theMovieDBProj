@@ -5,12 +5,16 @@ import MovieListItem from '../MovieListItem';
 
 import API from '../../helpers/API';
 
+import Pagination from '../Pagination';
+
 class MovieList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			movies: [],
 			allGenres: [],
+			page: 1,
+			total_pages: 1,
 		};
 	}
 
@@ -21,9 +25,14 @@ class MovieList extends React.Component {
 		const dataAllGenres = await API.getGenres();
 		const allGenres = dataAllGenres.genres;
 
+		const page = dataMovies.page;
+		const total_pages = dataMovies.total_pages;
+
 		this.setState({
 			movies,
 			allGenres,
+			page,
+			total_pages,
 		});
 	}
 
@@ -32,6 +41,7 @@ class MovieList extends React.Component {
 			<div>
 				{this.state.movies.map((item, index) => 
 					<MovieListItem movie={item} allGenres={this.state.allGenres} key={index} />)}	
+				<Pagination />
 			</div>
 		);
 	}
