@@ -41,7 +41,7 @@ class MovieList extends React.Component {
 			<div>
 				{this.state.movies.map((item, index) => 
 					<MovieListItem movie={item} allGenres={this.state.allGenres} key={index} />)}	
-				<Pagination />
+				<Pagination total_pages={this.state.total_pages} page={this.state.page}/>
 			</div>
 		);
 	}
