@@ -5,12 +5,18 @@ import Button from '../Button';
 
 const Pagination = (props) => {
 
+	const {total_pages, page} = props;
+
 	const clickHandler = () => {
-		const goTo = document.getElementById("pageInput").value;
+		let goTo = document.getElementById("pageInput").value;
+		if (goTo > total_pages) {
+			goTo = total_pages;
+			document.getElementById("pageInput").value = goTo; //убрать?
+		};
 		console.log(goTo);
+
 	};
 
-	const {total_pages, page} = props;
 	return (
 		<section className="pagination">
 			<div>
