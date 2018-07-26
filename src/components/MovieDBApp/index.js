@@ -37,11 +37,27 @@ class MovieDBApp extends React.Component {
 		});
 	}
 
+	goToHandler = () => {
+		let goTo = document.getElementById("pageInput").value;
+		if (goTo > this.state.total_pages) {
+			goTo = this.state.total_pages;
+			document.getElementById("pageInput").value = goTo; //убрать?
+		};
+		console.log(goTo);
+	};
+
+	onChange = (e) => {
+		console.log(e.target.value);
+		this.setState({
+			page: e.target.value
+		})
+	};
+
 	render() {
 		return (
 			<div>
 				<MovieList movies={this.state.movies} allGenres={this.state.allGenres}/>	
-				<Pagination total_pages={this.state.total_pages} page={this.state.page}/>
+				<Pagination total_pages={this.state.total_pages} page={this.state.page} onChange={this.onChange} onClick={this.goToHandler}/>
 			</div>
 		);
 	}
