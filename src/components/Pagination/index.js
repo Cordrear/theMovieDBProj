@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.less';
-import API from '../../helpers/API';
 import Button from '../Button';
 
 const Pagination = (props) => {
