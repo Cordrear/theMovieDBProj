@@ -15,8 +15,8 @@ class MovieDBApp extends React.Component {
 		};
 	}
 
-	async componentDidMount() {
-		const dataMovies = await API.movies.getPopular();
+	async getPopularMovies(pageNumber = 1) {
+		const dataMovies = await API.movies.getPopular(pageNumber);
 		const movies = dataMovies.results;
 
 		const dataAllGenres = await API.getGenres();
@@ -33,16 +33,22 @@ class MovieDBApp extends React.Component {
 		});
 	}
 
+	async componentDidMount() {
+		this.getPopularMovies();
+	}
+
 	goToHandler = (e) => {
-		let goTo = e.target.value;
+		let goTo = this.state.pageInputValue;
 		if (goTo > this.state.total_pages) {
 			goTo = this.state.total_pages;
 		};
-		//API request
+		if (goTo < 1) {
+			goTo = 1;
+		};
+		this.getPopularMovies(goTo);
 	};
 
 	onPageInputChange = (e) => {
-		console.log(e.target.value);
 		this.setState({
 			pageInputValue: e.target.value
 		})
@@ -51,8 +57,10 @@ class MovieDBApp extends React.Component {
 	render() {
 		return (
 			<div>
-				<MovieList movies={this.state.movies} allGenres={this.state.allGenres}/>	
-				<Pagination total_pages={this.state.total_pages} page={this.state.page} pageInputValue={this.state.pageInputValue} onChange={this.onPageInputChange} onClick={this.goToHandler}/>
+				<MovieList movies={this.state.movies} allGenres={this.state.allGenres} />	
+				<Pagination total_pages={this.state.total_pages} page={this.state.page} 
+					pageInputValue={this.state.pageInputValue} onChange={this.onPageInputChange} 
+					onClick={this.goToHandler} />
 			</div>
 		);
 	}
