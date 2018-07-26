@@ -23,7 +23,7 @@ const Pagination = (props) => {
 				<Button text="Перейти" onClick={clickHandler}/>
 			</div>
 			<div>
-				<p>Страницы: 1 .. {total_pages}</p>
+				<p>Страница: {page} из {total_pages}</p>
 			</div>
 		</section>
 	);
