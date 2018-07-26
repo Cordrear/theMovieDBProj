@@ -4,12 +4,12 @@ import Button from '../Button';
 
 const Pagination = (props) => {
 
-	const {total_pages, page, onChange, onClick} = props;
+	const {total_pages, page, pageInputValue, onChange, onClick} = props;
 
 	return (
 		<section className="pagination">
 			<div>
-				<input id="pageInput" type="number" min="1" max={total_pages} value={page} onChange={onChange} />
+				<input id="pageInput" type="number" min="1" max={total_pages} value={pageInputValue} onChange={onChange} />
 				<Button text="Перейти" onClick={onClick} />
 			</div>
 			<div>

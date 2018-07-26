@@ -1,11 +1,6 @@
 import React from 'react';
-
-
-
 import API from '../../helpers/API';
-
 import Pagination from '../Pagination';
-
 import MovieList from '../MovieList';
 
 class MovieDBApp extends React.Component {
@@ -16,6 +11,7 @@ class MovieDBApp extends React.Component {
 			allGenres: [],
 			page: 1,
 			total_pages: 1,
+			pageInputValue: 1
 		};
 	}
 
@@ -46,10 +42,10 @@ class MovieDBApp extends React.Component {
 		console.log(goTo);
 	};
 
-	onChange = (e) => {
+	onPageInputChange = (e) => {
 		console.log(e.target.value);
 		this.setState({
-			page: e.target.value
+			pageInputValue: e.target.value
 		})
 	};
 
@@ -57,7 +53,7 @@ class MovieDBApp extends React.Component {
 		return (
 			<div>
 				<MovieList movies={this.state.movies} allGenres={this.state.allGenres}/>	
-				<Pagination total_pages={this.state.total_pages} page={this.state.page} onChange={this.onChange} onClick={this.goToHandler}/>
+				<Pagination total_pages={this.state.total_pages} page={this.state.page} pageInputValue={this.state.pageInputValue} onChange={this.onPageInputChange} onClick={this.goToHandler}/>
 			</div>
 		);
 	}
