@@ -2,17 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-import MovieList from './components/MovieList';
+import MovieDBApp from './components/MovieDBApp';
 
 import './style.less';
 
-const App = () => {
-  return (
-    <div>
-    	
-    	<MovieList />
+const App = () => (
+    <div>	
+    	<MovieDBApp />
     </div>
-  );
-};
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));
