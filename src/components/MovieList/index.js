@@ -10,8 +10,12 @@ import Pagination from '../Pagination';
 const MovieList = (props) => {
 	return (
 		<div>
-			{props.movies.map((item, index) => 
-				<MovieListItem movie={item} allGenres={props.allGenres} key={index} />)}
+			{props.movies.map((item, index) =>
+				<MovieListItem
+                    key={index}
+                    movie={item}
+                    allGenres={props.allGenres}
+                />)}
 		</div>
 	);
 }

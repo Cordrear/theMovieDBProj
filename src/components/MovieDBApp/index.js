@@ -30,6 +30,7 @@ class MovieDBApp extends React.Component {
 			allGenres,
 			page,
 			total_pages,
+			pageInputValue: pageNumber
 		});
 	}
 
@@ -38,13 +39,8 @@ class MovieDBApp extends React.Component {
 	}
 
 	goToHandler = (e) => {
-		let goTo = this.state.pageInputValue;
-		if (goTo > this.state.total_pages) {
-			goTo = this.state.total_pages;
-		};
-		if (goTo < 1) {
-			goTo = 1;
-		};
+		const { pageInputValue, total_pages} = this.state;
+		const goTo = (pageInputValue > total_pages) ? total_pages : (pageInputValue < 1) ? 1 : pageInputValue;
 		this.getPopularMovies(goTo);
 	};
 
@@ -55,12 +51,20 @@ class MovieDBApp extends React.Component {
 	};
 
 	render() {
+		const { movies, allGenres, total_pages, page, pageInputValue } = this.state;
 		return (
 			<div>
-				<MovieList movies={this.state.movies} allGenres={this.state.allGenres} />	
-				<Pagination total_pages={this.state.total_pages} page={this.state.page} 
-					pageInputValue={this.state.pageInputValue} onChange={this.onPageInputChange} 
-					onClick={this.goToHandler} />
+				<MovieList
+					movies={movies}
+					allGenres={allGenres}
+				 />
+				<Pagination
+					page={page}
+					total_pages={total_pages}
+					pageInputValue={pageInputValue}
+					onChange={this.onPageInputChange}
+					onClick={this.goToHandler}
+				/>
 			</div>
 		);
 	}
