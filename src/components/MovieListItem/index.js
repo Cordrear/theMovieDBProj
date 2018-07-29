@@ -30,7 +30,7 @@ const MovieListItem = (props) => {
 		<article className="movie-list-item">
 			<img className="img" src={poster_path} alt={movie.title} />
 			<div className="info">
-				<h3 className="title">{movie.title}</h3>
+				<a className="title">{movie.title}</a>
 				<p className="genres">{convertedGenres}</p>
 			</div>
 			<Button text="fav" />
