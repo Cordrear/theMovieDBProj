@@ -6,10 +6,8 @@ import MovieDBApp from './components/MovieDBApp';
 
 import './style.less';
 
-const App = () => (
-    <div>	
-    	<MovieDBApp />
-    </div>
+const App = () => (	
+    <MovieDBApp />
 );
 
 ReactDOM.render(<App />, document.getElementById('root'));
