@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-import MovieDBApp from './components/MovieDBApp';
+import MovieDBApp from './MovieDBApp';
 
 import './style.less';
 

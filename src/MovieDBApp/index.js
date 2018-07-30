@@ -1,8 +1,8 @@
 import React from 'react';
-import API from '../../helpers/API';
-import Pagination from '../Pagination';
-import MovieList from '../MovieList';
-import Header from '../Header';
+import API from '../helpers/API';
+import Pagination from '../components/Pagination';
+import MovieList from '../components/MovieList';
+import Header from '../components/Header';
 
 class MovieDBApp extends React.Component {
 	constructor(props) {
