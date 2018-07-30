@@ -14,14 +14,6 @@ const MovieListItem = (props) => {
 	});
 	convertedGenres = convertedGenres.slice(0, -2);
 
-	//const convertGenresIdsToNames = (genres) => {
-	//	let names = [];
-	//	allGenres.forEach((item, i, allGenres) => {
-	//		if (genres.indexOf(item.id) != -1) names.push(item.name);
-	//	});
-	//	return names.join(', ');
-	//};
-
 	return (
 		<article className="movie-list-item">
 			<img className="img" src={API.movies.getPosterPath(movie.poster_path)} alt={movie.title} />

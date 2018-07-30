@@ -40,17 +40,3 @@ const request = (req) => {
 };
 
 export default API;
-
-/*
-//all genres
-https://api.themoviedb.org/3/genre/movie/list?api_key=d376b1449bc67048fe304e600c11fb06&language=ru
-
-//getByID
-https://api.themoviedb.org/3/movie/123?api_key=d376b1449bc67048fe304e600c11fb06&language=ru //123 - id
-
-//getRecomendations
-https://api.themoviedb.org/3/movie/123/recommendations?api_key=d376b1449bc67048fe304e600c11fb06&language=ru&page=1
-
-//search
-https://api.themoviedb.org/3/search/movie?api_key=d376b1449bc67048fe304e600c11fb06&language=ru&query=prestige&page=1&include_adult=false
-*/
