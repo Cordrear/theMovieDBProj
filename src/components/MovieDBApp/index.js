@@ -2,6 +2,7 @@ import React from 'react';
 import API from '../../helpers/API';
 import Pagination from '../Pagination';
 import MovieList from '../MovieList';
+import Header from '../Header';
 
 class MovieDBApp extends React.Component {
 	constructor(props) {
@@ -54,6 +55,7 @@ class MovieDBApp extends React.Component {
 		const { movies, allGenres, total_pages, page, pageInputValue } = this.state;
 		return (
 			<div>
+				<Header />
 				<MovieList
 					movies={movies}
 					allGenres={allGenres}
