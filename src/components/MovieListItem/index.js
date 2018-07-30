@@ -6,7 +6,7 @@ import Button from '../Button';
 import API from '../../helpers/API';
 
 const MovieListItem = (props) => {
-	const { movie, allGenres } = props;
+	const { movie, allGenres, onClick } = props;
 
 	let convertedGenres = '';
 	allGenres.forEach((item) => {
@@ -18,7 +18,7 @@ const MovieListItem = (props) => {
 		<article className="movie-list-item">
 			<img className="img" src={API.movies.getPosterPath(movie.poster_path)} alt={movie.title} />
 			<div className="info">
-				<a className="title">{movie.title}</a>
+				<a className="title" onClick={onClick}>{movie.title}</a>
 				<p className="genres">{convertedGenres}</p>
 			</div>
 			<Button bigFont={true} text={"\u2b50"}/>
