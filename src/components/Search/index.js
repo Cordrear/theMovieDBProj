@@ -5,7 +5,7 @@ import Button from '../Button';
 const Search = () => {
 	//
 	return(
-		<div class="search">
+		<div className="search">
 			<input />
 			<Button text="Поиск" />
 		</div>

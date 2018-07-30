@@ -2,11 +2,15 @@ import React from 'react';
 import './style.less';
 
 const Button = props => {
-  return (
-    <button className="btn" onClick={props.onClick}>
-      {props.text}
-    </button>
-  );
+	const {onClick, text, height, bigFont} = props;
+	return (
+    	<button 
+    		className={'btn' + (bigFont ? ' fav' : '')}
+    		onClick={onClick}
+    	>
+      		{text}
+    	</button>
+ 	);
 };
 
 export default Button;

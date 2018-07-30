@@ -21,7 +21,7 @@ const MovieListItem = (props) => {
 				<a className="title">{movie.title}</a>
 				<p className="genres">{convertedGenres}</p>
 			</div>
-			<Button text="fav" />
+			<Button bigFont={true} text={"\u2b50"}/>
 		</article>
 	);
 };
