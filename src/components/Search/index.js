@@ -6,7 +6,16 @@ const Search = (props) => {
 	const {onClick, onChange, searchInputValue} = props;
 	return(
 		<div className="search">
-			<input onChange={onChange} value={searchInputValue} />
+			<input
+				onChange={onChange}
+				value={searchInputValue}
+				onKeyUp={
+					(e) => {
+						if (e.keyCode === 13) {
+							onClick();
+						}
+					}
+				} />
 			<Button text="Поиск" onClick={onClick} />
 		</div>
 	);

@@ -15,7 +15,20 @@ const Pagination = (props) => {
 	return (
 		<section className="pagination">
 			<div>
-				<input id="pageInput" type="number" min="1" max={total_pages} value={pageInputValue} onChange={onChange} />
+				<input
+					id="pageInput"
+					type="number"
+					min="1"
+					max={total_pages}
+					value={pageInputValue}
+					onChange={onChange}
+					onKeyUp={
+						(e) => {
+							if (e.keyCode === 13) {
+								onClick();
+							}
+						}
+					} />
 				<Button text="Перейти" onClick={onClick} />
 			</div>
 			<div>
