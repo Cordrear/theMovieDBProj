@@ -3,11 +3,11 @@ import './style.less';
 import Button from '../Button';
 import Search from '../Search';
 
-const Header = () => {
-	//
+const Header = (props) => {
+	const {onClick, onChange, searchInputValue} = props;
 	return(
 		<header>
-			<Search />
+			<Search onClick={onClick} onChange={onChange} searchInputValue={searchInputValue} />
 			<Button text="Избранное" />
 		</header>
 	);

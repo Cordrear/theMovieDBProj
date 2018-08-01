@@ -12,8 +12,13 @@ class MovieDBApp extends React.Component {
 			allGenres: [],
 			page: 1,
 			total_pages: 1,
-			pageInputValue: 1
+			pageInputValue: 1,
+			searchInputValue: ''
 		};
+	}
+
+	async componentDidMount() {
+		this.getPopularMovies();
 	}
 
 	async getPopularMovies(pageNumber = 1) {
@@ -34,8 +39,22 @@ class MovieDBApp extends React.Component {
 		});
 	}
 
-	async componentDidMount() {
-		this.getPopularMovies();
+	async doMoviesSearch(query) {
+		const dataMovies = await API.search(query);
+		const movies = dataMovies.results;
+
+		const dataAllGenres = await API.getGenres();
+		const allGenres = dataAllGenres.genres;
+
+		const page = dataMovies.page;
+		const total_pages = dataMovies.total_pages;
+
+		this.setState({
+			movies,
+			allGenres,
+			page,
+			total_pages,
+		});
 	}
 
 	goToHandler = (e) => {
@@ -49,16 +68,29 @@ class MovieDBApp extends React.Component {
 		this.getPopularMovies(goTo);
 	};
 
+	searchHandler = () => {
+		const query = this.state.searchInputValue;
+		if (query){
+			this.doMoviesSearch(query);
+		}
+	};
+
 	onPageInputChange = (e) => {
 		this.setState({
 			pageInputValue: e.target.value
-		})
+		});
+	};
+
+	onSearchInputChange = (e) => {
+		this.setState({
+			searchInputValue: e.target.value
+		});
 	};
 
 	render() {
 		return (
 			<div>
-				<Header />
+				<Header onClick={this.searchHandler} onChange={this.onSearchInputChange} searchInputValue={this.state.searchInputValue} />
 				<MovieList movies={this.state.movies} allGenres={this.state.allGenres} />	
 				<Pagination total_pages={this.state.total_pages} page={this.state.page} 
 					pageInputValue={this.state.pageInputValue} onChange={this.onPageInputChange} 
