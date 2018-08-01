@@ -72,6 +72,8 @@ class MovieDBApp extends React.Component {
 		const query = this.state.searchInputValue;
 		if (query){
 			this.doMoviesSearch(query);
+		} else {
+			this.getPopularMovies();
 		}
 	};
 
