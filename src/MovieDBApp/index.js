@@ -13,7 +13,9 @@ class MovieDBApp extends React.Component {
 			page: 1,
 			total_pages: 1,
 			pageInputValue: 1,
-			searchInputValue: ''
+			searchInputValue: '',
+			mode: 'popular',
+			lastSearch: ''
 		};
 	}
 
@@ -39,8 +41,8 @@ class MovieDBApp extends React.Component {
 		});
 	}
 
-	async doMoviesSearch(query) {
-		const dataMovies = await API.search(query);
+	async doMoviesSearch(query, pageNumber = 1) {
+		const dataMovies = await API.search(query, pageNumber);
 		const movies = dataMovies.results;
 
 		const dataAllGenres = await API.getGenres();
@@ -53,7 +55,7 @@ class MovieDBApp extends React.Component {
 			movies,
 			allGenres,
 			page,
-			total_pages,
+			total_pages
 		});
 	}
 
@@ -65,15 +67,43 @@ class MovieDBApp extends React.Component {
 		if (goTo < 1) {
 			goTo = 1;
 		};
-		this.getPopularMovies(goTo);
+		switch (this.state.mode) {
+			case 'popular':
+				this.getPopularMovies(goTo);
+				break;
+			case 'search':
+				this.doMoviesSearch(this.state.searchInputValue, goTo);
+				break;
+			case 'fav':
+				//
+				break;
+			default: 
+				console.error('nonexistent mode');
+		}
+		
+		
 	};
 
 	searchHandler = () => {
 		const query = this.state.searchInputValue;
 		if (query){
 			this.doMoviesSearch(query);
+			if (this.state.lastSearch != query) {
+				this.setState({
+					lastSearch: query,
+					pageInputValue: 1
+				});
+			}
+			this.setState({
+				mode: 'search'
+			});
 		} else {
 			this.getPopularMovies();
+			this.setState({
+				mode: 'popular',
+				pageInputValue: 1,
+				lastSearch: ''
+			});
 		}
 	};
 
