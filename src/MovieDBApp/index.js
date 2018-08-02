@@ -78,6 +78,7 @@ class MovieDBApp extends React.Component {
 			default: 
 				console.error('nonexistent mode');
 		}
+		window.scrollTo(0, 0);
 	};
 
 	searchHandler = () => {
