@@ -32,7 +32,6 @@ class MovieDBApp extends React.Component {
 
 		const page = dataMovies.page;
 		const total_pages = dataMovies.total_pages;
-
 		this.setState({
 			movies,
 			allGenres,
@@ -50,7 +49,6 @@ class MovieDBApp extends React.Component {
 
 		const page = dataMovies.page;
 		const total_pages = dataMovies.total_pages;
-
 		this.setState({
 			movies,
 			allGenres,
@@ -80,8 +78,6 @@ class MovieDBApp extends React.Component {
 			default: 
 				console.error('nonexistent mode');
 		}
-		
-		
 	};
 
 	searchHandler = () => {
@@ -119,14 +115,35 @@ class MovieDBApp extends React.Component {
 		});
 	};
 
+	onLogoClick = () => {
+		this.getPopularMovies();
+		this.setState({
+				mode: 'popular',
+				pageInputValue: 1,
+				lastSearch: ''
+			});
+	};
+
 	render() {
 		return (
 			<div>
-				<Header onClick={this.searchHandler} onChange={this.onSearchInputChange} searchInputValue={this.state.searchInputValue} />
-				<MovieList movies={this.state.movies} allGenres={this.state.allGenres} />	
-				<Pagination total_pages={this.state.total_pages} page={this.state.page} 
-					pageInputValue={this.state.pageInputValue} onChange={this.onPageInputChange} 
-					onClick={this.goToHandler} />
+				<Header
+					onClick={this.searchHandler}
+					onChange={this.onSearchInputChange}
+					searchInputValue={this.state.searchInputValue}
+					onLogoClick={this.onLogoClick}
+				/>
+				<MovieList
+					movies={this.state.movies}
+					allGenres={this.state.allGenres} 
+				/>	
+				<Pagination
+					total_pages={this.state.total_pages}
+					page={this.state.page} 
+					pageInputValue={this.state.pageInputValue}
+					onChange={this.onPageInputChange} 
+					onClick={this.goToHandler}
+				/>
 			</div>
 		);
 	}

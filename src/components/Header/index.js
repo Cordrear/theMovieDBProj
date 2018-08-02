@@ -4,10 +4,18 @@ import Button from '../Button';
 import Search from '../Search';
 
 const Header = (props) => {
-	const {onClick, onChange, searchInputValue} = props;
+	const {onClick, onChange, searchInputValue, onLogoClick} = props;
 	return(
 		<header>
-			<Search onClick={onClick} onChange={onChange} searchInputValue={searchInputValue} />
+			<img
+				src='https://www.themoviedb.org/static_cache/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg'
+				onClick={onLogoClick}
+			/>
+			<Search
+				onClick={onClick}
+				onChange={onChange}
+				searchInputValue={searchInputValue}
+			/>
 			<Button text="Избранное" />
 		</header>
 	);
