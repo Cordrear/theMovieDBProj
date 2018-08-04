@@ -15,7 +15,8 @@ class MovieDBApp extends React.Component {
 			pageInputValue: 1,
 			searchInputValue: '',
 			mode: 'popular',
-			lastSearch: ''
+			lastSearch: '',
+			isLoading: true
 		};
 	}
 
@@ -24,12 +25,15 @@ class MovieDBApp extends React.Component {
 	}
 
 	async getPopularMovies(pageNumber = 1) {
+		this.setState({isLoading: true});
+
 		const dataMovies = await API.movies.getPopular(pageNumber);
 		const movies = dataMovies.results;
 
 		const dataAllGenres = await API.getGenres();
 		const allGenres = dataAllGenres.genres;
 
+		this.setState({isLoading: false});
 		const page = dataMovies.page;
 		const total_pages = dataMovies.total_pages;
 		this.setState({
@@ -41,12 +45,15 @@ class MovieDBApp extends React.Component {
 	}
 
 	async doMoviesSearch(query, pageNumber = 1) {
+		this.setState({isLoading: true});
+
 		const dataMovies = await API.search(query, pageNumber);
 		const movies = dataMovies.results;
 
 		const dataAllGenres = await API.getGenres();
 		const allGenres = dataAllGenres.genres;
 
+		this.setState({isLoading: false});
 		const page = dataMovies.page;
 		const total_pages = dataMovies.total_pages;
 		this.setState({
@@ -136,7 +143,8 @@ class MovieDBApp extends React.Component {
 				/>
 				<MovieList
 					movies={this.state.movies}
-					allGenres={this.state.allGenres} 
+					allGenres={this.state.allGenres}
+					isLoading={this.state.isLoading}
 				/>	
 				<Pagination
 					total_pages={this.state.total_pages}
