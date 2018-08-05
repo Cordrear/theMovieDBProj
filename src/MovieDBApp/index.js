@@ -1,5 +1,6 @@
 import React from 'react';
 import API from '../helpers/API';
+import MyLocalStorage from '../helpers/localStorage';
 import Pagination from '../components/Pagination';
 import MovieList from '../components/MovieList';
 import Header from '../components/Header';
@@ -16,7 +17,8 @@ class MovieDBApp extends React.Component {
 			searchInputValue: '',
 			mode: 'popular',
 			lastSearch: '',
-			isLoading: true
+			isLoading: true,
+			updateByFav: true
 		};
 	}
 
@@ -132,6 +134,11 @@ class MovieDBApp extends React.Component {
 			});
 	};
 
+	onFavClick = (id) => {
+		MyLocalStorage.toggleInArray('fav', id);
+		this.setState(this.state);
+	}
+
 	render() {
 		return (
 			<div>
@@ -145,6 +152,7 @@ class MovieDBApp extends React.Component {
 					movies={this.state.movies}
 					allGenres={this.state.allGenres}
 					isLoading={this.state.isLoading}
+					onFavClick={this.onFavClick}
 				/>	
 				<Pagination
 					total_pages={this.state.total_pages}

@@ -11,10 +11,7 @@ import Pagination from '../Pagination';
 
 const MovieList = (props) => {
 
-	function onFavClick(id) {
-		MyLocalStorage.toggleInArray('fav', id);
-	}
-
+	
 	return (
 		<div className='movie-list'>
 			{!props.isLoading ? (
@@ -23,7 +20,8 @@ const MovieList = (props) => {
                     key={index}
                     movie={item}
                     allGenres={props.allGenres}
-                    onFavClick={()=>{onFavClick(item.id)}}
+                    onFavClick={()=>{props.onFavClick(item.id)}}
+                    inFav={MyLocalStorage.isInArray('fav', item.id)}
                 />)
 			) : (
 			<div className='is-loading'>
