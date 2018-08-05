@@ -1,6 +1,12 @@
 class LocalStorage {
 	get(key) {
-		return JSON.parse(window.localStorage.getItem(key));
+		let item = window.localStorage.getItem(key);
+		if (item !== null) {
+			return JSON.parse(item);
+		} else {
+			console.log('null!!!!!!');
+			window.localStorage.setItem(key, []);
+		}
 	}
 	set(key, value) {
 		window.localStorage.setItem(key, JSON.stringify(value));
@@ -31,19 +37,25 @@ class LocalStorage {
 		}
 	}
 	toggleInArray(key, subValue) {
+		console.log('1');
 		let value = this.get(key);
 		if (value != null) {
+			console.log('2');
 			const index = value.indexOf(subValue);
 			if (index != -1) {
+				console.log('3');
 				value.splice(index, 1);
 				this.set(key, value);
 			} else {
+				console.log('4');
 				value.push(subValue);
 				this.set(key, value);
 			}
 		} else {
-			this.set(key, [value]);
+			console.log('5');
+			this.set(key, [subValue]);
 		}
+		console.log('6');
 	}
 }
 

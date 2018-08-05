@@ -5,13 +5,14 @@ import './style.less';
 import MovieListItem from '../MovieListItem';
 
 import API from '../../helpers/API';
+import MyLocalStorage from '../../helpers/localStorage';
 
 import Pagination from '../Pagination';
 
 const MovieList = (props) => {
 
-	function onClick(id) {
-		console.log(id);
+	function onFavClick(id) {
+		MyLocalStorage.toggleInArray('fav', id);
 	}
 
 	return (
@@ -22,7 +23,7 @@ const MovieList = (props) => {
                     key={index}
                     movie={item}
                     allGenres={props.allGenres}
-                    onClick={()=>{onClick(item.id)}}
+                    onFavClick={()=>{onFavClick(item.id)}}
                 />)
 			) : (
 			<div className='is-loading'>

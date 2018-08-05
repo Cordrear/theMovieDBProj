@@ -6,7 +6,7 @@ import Button from '../Button';
 import API from '../../helpers/API';
 
 const MovieListItem = (props) => {
-	const { movie, allGenres, onClick } = props;
+	const { movie, allGenres, onClick, onFavClick } = props;
 
 	let convertedGenres = '';
 	allGenres.forEach((item) => {
@@ -21,7 +21,7 @@ const MovieListItem = (props) => {
 				<a className="title" onClick={onClick}>{movie.title}</a>
 				<p className="genres">{convertedGenres}</p>
 			</div>
-			<Button bigFont={true} text={"\u2b50"}/>
+			<Button bigFont={true} text={"\u2b50"} onClick={onFavClick}/>
 		</article>
 	);
 };
