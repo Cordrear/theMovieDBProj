@@ -3,7 +3,7 @@ import './style.less';
 import Button from '../Button';
 
 const Search = (props) => {
-	const {onClick, onChange, searchInputValue} = props;
+	const {onSearchClick, onChange, searchInputValue} = props;
 	return(
 		<div className="search">
 			<input
@@ -12,11 +12,11 @@ const Search = (props) => {
 				onKeyUp={
 					(e) => {
 						if (e.keyCode === 13) {
-							onClick();
+							onSearchClick();
 						}
 					}
 				} />
-			<Button text="Поиск" onClick={onClick} />
+			<Button text="Поиск" onClick={onSearchClick} />
 		</div>
 	);
 }

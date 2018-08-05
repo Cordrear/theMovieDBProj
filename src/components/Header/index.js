@@ -4,7 +4,7 @@ import Button from '../Button';
 import Search from '../Search';
 
 const Header = (props) => {
-	const {onClick, onChange, searchInputValue, onLogoClick} = props;
+	const {onSearchClick, onChange, searchInputValue, onLogoClick, getFavMovies} = props;
 	return(
 		<header>
 			<img
@@ -12,11 +12,11 @@ const Header = (props) => {
 				onClick={onLogoClick}
 			/>
 			<Search
-				onClick={onClick}
+				onSearchClick={onSearchClick}
 				onChange={onChange}
 				searchInputValue={searchInputValue}
 			/>
-			<Button text="Избранное" />
+			<Button text="Избранное" onClick={getFavMovies}/>
 		</header>
 	);
 };

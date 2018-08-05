@@ -23,6 +23,9 @@ class MovieDBApp extends React.Component {
 	}
 
 	async componentDidMount() {
+		if(MyLocalStorage.isEmpty('fav')) {
+			MyLocalStorage.set('fav', new Array());
+		}
 		this.getPopularMovies();
 	}
 
@@ -82,10 +85,8 @@ class MovieDBApp extends React.Component {
 				this.doMoviesSearch(this.state.searchInputValue, goTo);
 				break;
 			case 'fav':
-				//
+				this.getFavMovies(goTo);
 				break;
-			default: 
-				console.error('nonexistent mode');
 		}
 		window.scrollTo(0, 0);
 	};
@@ -137,16 +138,36 @@ class MovieDBApp extends React.Component {
 	onFavClick = (id) => {
 		MyLocalStorage.toggleInArray('fav', id);
 		this.setState(this.state);
-	}
+	};
+
+	async getMovieById(id) {
+		const movie = await API.movies.getById(id);
+		return movie;
+	};
+
+	async getFavMovies() {
+		const arr = MyLocalStorage.get('fav');
+		if (arr == null || arr == '') {
+			alert('В избранном пусто');
+		} else {
+			let favMovies = new Array();
+			arr.forEach(async (item) => {
+				let movie = await API.movies.getById(item);
+				favMovies.push(movie);
+			});
+			console.log(favMovies);
+		}
+	};
 
 	render() {
 		return (
 			<div>
 				<Header
-					onClick={this.searchHandler}
+					onSearchClick={this.searchHandler}
 					onChange={this.onSearchInputChange}
 					searchInputValue={this.state.searchInputValue}
 					onLogoClick={this.onLogoClick}
+					getFavMovies={this.getFavMovies}
 				/>
 				<MovieList
 					movies={this.state.movies}
@@ -154,13 +175,15 @@ class MovieDBApp extends React.Component {
 					isLoading={this.state.isLoading}
 					onFavClick={this.onFavClick}
 				/>	
-				<Pagination
-					total_pages={this.state.total_pages}
-					page={this.state.page} 
-					pageInputValue={this.state.pageInputValue}
-					onChange={this.onPageInputChange} 
-					onClick={this.goToHandler}
-				/>
+				{(this.state.mode != 'fav') ? (
+					<Pagination
+						total_pages={this.state.total_pages}
+						page={this.state.page} 
+						pageInputValue={this.state.pageInputValue}
+						onChange={this.onPageInputChange} 
+						onClick={this.goToHandler}
+					/>) : (null)
+				}
 			</div>
 		);
 	}

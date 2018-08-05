@@ -1,10 +1,9 @@
 class LocalStorage {
 	get(key) {
 		const item = window.localStorage.getItem(key);
-		if (item !== null) {
+		if (item != null) {
 			return JSON.parse(item);
 		} else {
-			window.localStorage.setItem(key, []);
 			return null;
 		}
 	}
@@ -51,7 +50,7 @@ class LocalStorage {
 			this.set(key, [subValue]);
 		}
 	}
-	isInArray(key, subValue){
+	isInArray(key, subValue) {
 		let arr = this.get(key);
 		const index = arr.indexOf(subValue);
 		if (index != -1) {
