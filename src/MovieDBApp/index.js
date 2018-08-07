@@ -85,7 +85,7 @@ class MovieDBApp extends React.Component {
 				this.doMoviesSearch(this.state.searchInputValue, goTo);
 				break;
 			case 'fav':
-				this.getFavMovies(goTo);
+				//this.getFavMovies(goTo);
 				break;
 		}
 		window.scrollTo(0, 0);
@@ -145,18 +145,27 @@ class MovieDBApp extends React.Component {
 		return movie;
 	};
 
-	async getFavMovies() {
+	showFavMovies = () => {
 		const arr = MyLocalStorage.get('fav');
-		if (arr == null || arr == '') {
+		/*if (arr == null || arr == '') {
 			alert('В избранном пусто');
-		} else {
-			let favMovies = new Array();
+		} else {*/
+			this.setState({
+				isLoading: true,
+				mode: 'fav'
+			});
+			const favMovies = new Array();
 			arr.forEach(async (item) => {
-				let movie = await API.movies.getById(item);
+				const movie = await API.movies.getById(item);
 				favMovies.push(movie);
 			});
-			console.log(favMovies);
-		}
+			console.log('favMovies', favMovies);
+			this.setState({
+				movies: favMovies,
+				isLoading: false
+			});
+			console.log(this.state.movies);
+		/*}*/
 	};
 
 	render() {
@@ -167,7 +176,7 @@ class MovieDBApp extends React.Component {
 					onChange={this.onSearchInputChange}
 					searchInputValue={this.state.searchInputValue}
 					onLogoClick={this.onLogoClick}
-					getFavMovies={this.getFavMovies}
+					showFavMovies={this.showFavMovies}
 				/>
 				<MovieList
 					movies={this.state.movies}
