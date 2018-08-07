@@ -145,7 +145,7 @@ class MovieDBApp extends React.Component {
 		return movie;
 	};
 
-	async showFavMovies() {
+	async getFavMovies() {
 		const arr = MyLocalStorage.get('fav');
 		if (arr == null || arr == '') {
 			alert('В избранном пусто');
@@ -167,7 +167,7 @@ class MovieDBApp extends React.Component {
 					onChange={this.onSearchInputChange}
 					searchInputValue={this.state.searchInputValue}
 					onLogoClick={this.onLogoClick}
-					showFavMovies={this.showFavMovies}
+					getFavMovies={this.getFavMovies}
 				/>
 				<MovieList
 					movies={this.state.movies}
