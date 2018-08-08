@@ -11,7 +11,7 @@ import Pagination from '../Pagination';
 
 const MovieList = (props) => {
 
-	
+	console.log('1', props.movies);
 	return (
 		<div className='movie-list'>
 			{!props.isLoading ? (

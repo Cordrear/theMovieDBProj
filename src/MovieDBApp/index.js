@@ -154,21 +154,26 @@ class MovieDBApp extends React.Component {
 				isLoading: true,
 				mode: 'fav'
 			});
-			const favMovies = new Array();
-			arr.forEach(async (item) => {
+			let favMovies = [];
+			arr.forEach( async (item) => {
 				const movie = await API.movies.getById(item);
+				console.log(movie);
 				favMovies.push(movie);
+				this.setState({isLoading: false,
+				movies: favMovies
+				});
 			});
 			console.log('favMovies', favMovies);
 			this.setState({
-				movies: favMovies,
-				isLoading: false
+			//	movies: favMovies,
+				
 			});
-			console.log(this.state.movies);
+			//console.log(this.state.movies);
 		/*}*/
 	};
 
 	render() {
+		console.log(this.state.movies);
 		return (
 			<div>
 				<Header
