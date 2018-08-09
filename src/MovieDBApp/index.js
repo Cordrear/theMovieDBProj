@@ -166,6 +166,10 @@ class MovieDBApp extends React.Component {
 		};
 	};
 
+	onTitleClick = (id) => {
+		console.log(id);
+	}
+
 	render() {
 		return (
 			<div>
@@ -181,6 +185,7 @@ class MovieDBApp extends React.Component {
 					allGenres={this.state.allGenres}
 					isLoading={this.state.isLoading}
 					onFavClick={this.onFavClick}
+					onTitleClick={this.onTitleClick}
 				/>	
 				{(this.state.mode != 'fav') ? (
 					<Pagination

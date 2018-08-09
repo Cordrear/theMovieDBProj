@@ -6,7 +6,7 @@ import Button from '../Button';
 import API from '../../helpers/API';
 
 const MovieListItem = (props) => {
-	const { movie, allGenres, onClick, onFavClick, inFav } = props;
+	const { movie, allGenres, onFavClick, inFav, onTitleClick } = props;
 
 	let convertedGenres = '';
 	if(movie.genre_ids) {
@@ -24,9 +24,15 @@ const MovieListItem = (props) => {
 			<img
 				className="img"
 				src={API.movies.getPosterPath(movie.poster_path)}
-				alt={movie.title} />
+				alt={movie.title}
+			/>
 			<div className="info">
-				<a className="title" onClick={onClick}>{movie.title}</a>
+				<a 
+					className="title"
+					onClick={onTitleClick}
+				>
+					{movie.title}
+				</a>
 				<p className="genres">{convertedGenres}</p>
 			</div>
 			<Button

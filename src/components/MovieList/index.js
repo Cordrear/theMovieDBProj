@@ -20,6 +20,7 @@ const MovieList = (props) => {
                     allGenres={props.allGenres}
                     onFavClick={()=>{props.onFavClick(item.id)}}
                     inFav={MyLocalStorage.isInArray('fav', item.id)}
+                    onTitleClick={()=>{props.onTitleClick(item.id)}}
                 />)
 			) : (
 			<div className='is-loading'>
