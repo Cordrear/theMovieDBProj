@@ -9,14 +9,13 @@ const MovieListItem = (props) => {
 	const { movie, allGenres, onClick, onFavClick, inFav } = props;
 
 	let convertedGenres = '';
-	console.log('4', movie)
 	if(movie.genre_ids) {
 		allGenres.forEach((item) => {
 			if (movie.genre_ids.indexOf(item.id) != -1) convertedGenres += item.name + ', ';
 		});
 	}
 	if(movie.genres) {
-		convertedGenres += movie.genres.forEach(g=>g.name + ', ');
+		convertedGenres += movie.genres.forEach(g => g.name + ', ');
 	}
 	convertedGenres = convertedGenres.slice(0, -2);
 

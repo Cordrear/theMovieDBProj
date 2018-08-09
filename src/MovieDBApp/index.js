@@ -147,9 +147,9 @@ class MovieDBApp extends React.Component {
 
 	showFavMovies = () => {
 		const arr = MyLocalStorage.get('fav');
-		/*if (arr == null || arr == '') {
+		if (arr == null || arr == '') {
 			alert('В избранном пусто');
-		} else {*/
+		} else {
 			this.setState({
 				isLoading: true,
 				mode: 'fav'
@@ -157,23 +157,16 @@ class MovieDBApp extends React.Component {
 			let favMovies = [];
 			arr.forEach( async (item) => {
 				const movie = await API.movies.getById(item);
-				console.log(movie);
 				favMovies.push(movie);
-				this.setState({isLoading: false,
-				movies: favMovies
+				this.setState({
+					isLoading: false,
+					movies: favMovies
 				});
 			});
-			console.log('favMovies', favMovies);
-			this.setState({
-			//	movies: favMovies,
-				
-			});
-			//console.log(this.state.movies);
-		/*}*/
+		};
 	};
 
 	render() {
-		console.log(this.state.movies);
 		return (
 			<div>
 				<Header
