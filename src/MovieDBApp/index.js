@@ -132,10 +132,10 @@ class MovieDBApp extends React.Component {
 	onLogoClick = () => {
 		this.getPopularMovies();
 		this.setState({
-				mode: 'popular',
-				pageInputValue: 1,
-				lastSearch: ''
-			});
+			mode: 'popular',
+			pageInputValue: 1,
+			lastSearch: ''
+		});
 	};
 
 	onFavClick = (id) => {
@@ -210,7 +210,11 @@ class MovieDBApp extends React.Component {
 					/>) : (null)
 				}
 				{(this.state.underlay) && (
-					<Underlay movie={this.state.singleMovie} onClick={this.onUnderlayClick}/>
+					<Underlay
+						movie={this.state.singleMovie}
+						onClick={this.onUnderlayClick}
+						onFavClick={this.onFavClick}
+					/>
 				)}
 			</div>
 		);
