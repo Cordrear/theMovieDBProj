@@ -21,7 +21,7 @@ class MovieDBApp extends React.Component {
 			isLoading: true,
 			updateByFav: true,
 			underlay: false,
-			singleMovieId: 0
+			singleMovie: {}
 		};
 	}
 
@@ -169,10 +169,11 @@ class MovieDBApp extends React.Component {
 		};
 	};
 
-	onTitleClick = (id) => {
+	onTitleClick = async (id) => {
+		const movie = await this.getMovieById(id);
 		this.setState({
 			underlay: true,
-			singleMovieId: id
+			singleMovie: movie
 		})
 	}
 
@@ -209,7 +210,7 @@ class MovieDBApp extends React.Component {
 					/>) : (null)
 				}
 				{(this.state.underlay) && (
-					<Underlay id={this.state.singleMovieId} onClick={this.onUnderlayClick}/>
+					<Underlay movie={this.state.singleMovie} onClick={this.onUnderlayClick}/>
 				)}
 			</div>
 		);

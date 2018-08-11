@@ -1,11 +1,12 @@
 import React from 'react';
 import './style.less';
+import SingleMovie from '../SingleMovie';
 
 const Underlay = (props) => {
-	const { id, onClick } = props;
+	const { movie, onClick } = props;
 	return(
 		<section className='underlay' onClick={onClick}>
-			<p>{id}</p>
+			<SingleMovie movie={movie} />
 		</section>
 	);
 }
