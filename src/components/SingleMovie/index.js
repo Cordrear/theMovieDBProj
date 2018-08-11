@@ -33,33 +33,39 @@ const SingleMovie = (props) => {
 				/>
 				<div className='info'>
 					<p className='title'>{movie.title}</p>
-					<div className='info-item'>
-						<span className='info-type'>Оригинальное название:</span>
-						<span className='info-value'>{movie.original_title}</span>
-					</div>
-					<div className='info-item'>
-						<span className='info-type'>Дата выхода:</span>
-						<span className='info-value'>{movie.release_date}</span>
-					</div>
-					<div className='info-item'>
-						<span className='info-type'>Страны:</span>
-						<span className='info-value'>{convertedCountries}</span>
-					</div>
-					<div className='info-item'>
-						<span className='info-type'>Жанры:</span>
-						<span className='info-value'>{convertedGenres}</span>
-					</div>
-					<div className='info-item'>
-						<span className='info-type'>Продолжительность:</span>
-						<span className='info-value'>{movie.runtime}</span>
-					</div>
-					<div className='info-item'>
-						<span className='info-type'>Бюджет:</span>
-						<span className='info-value'>${movie.budget}</span>
-					</div>
-					<div className='info-item'>
-						<span className='info-type'>Сборы в мире:</span>
-						<span className='info-value'>${movie.revenue}</span>
+					<div className='info-wrapper'>
+						<div className='info-item'>
+							<span className='info-type'>Оригинальное название:</span>
+							<span className='info-value'>{movie.original_title}</span>
+						</div>
+						<div className='info-item'>
+							<span className='info-type'>Дата выхода:</span>
+							<span className='info-value'>{movie.release_date}</span>
+						</div>
+						<div className='info-item'>
+							<span className='info-type'>Страны:</span>
+							<span className='info-value'>{convertedCountries}</span>
+						</div>
+						<div className='info-item'>
+							<span className='info-type'>Жанры:</span>
+							<span className='info-value'>{convertedGenres}</span>
+						</div>
+						<div className='info-item'>
+							<span className='info-type'>Продолжительность:</span>
+							<span className='info-value'>{movie.runtime}</span>
+						</div>
+						<div className='info-item'>
+							<span className='info-type'>Бюджет:</span>
+							<span className='info-value'>${movie.budget}</span>
+						</div>
+						<div className='info-item'>
+							<span className='info-type'>Сборы в мире:</span>
+							<span className='info-value'>${movie.revenue}</span>
+						</div>
+						<div className='info-item'>
+							<span className='info-type'>Оценка:</span>
+							<span className='info-value'>{movie.vote_average} (всего голосов: {movie.vote_count})</span>
+						</div>
 					</div>
 				</div>
 				<Button
@@ -69,7 +75,8 @@ const SingleMovie = (props) => {
 					inFav={MyLocalStorage.isInArray('fav', movie.id)}
 				/>
 			</section>
-			<section className='details'>
+			<section className='overview'>
+				<p>{movie.overview}</p>
 			</section>
 			<section className='similar-movies'>
 			</section>
