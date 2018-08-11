@@ -15,7 +15,9 @@ const MovieListItem = (props) => {
 		});
 	}
 	if(movie.genres) {
-		convertedGenres += movie.genres.forEach(g => g.name + ', ');
+		movie.genres.forEach((genre) => {
+			convertedGenres += genre.name + ', ';
+		});
 	}
 	convertedGenres = convertedGenres.slice(0, -2);
 
