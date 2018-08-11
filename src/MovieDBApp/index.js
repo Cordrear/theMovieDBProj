@@ -4,6 +4,7 @@ import MyLocalStorage from '../helpers/localStorage';
 import Pagination from '../components/Pagination';
 import MovieList from '../components/MovieList';
 import Header from '../components/Header';
+import Underlay from '../components/Underlay';
 
 class MovieDBApp extends React.Component {
 	constructor(props) {
@@ -18,7 +19,9 @@ class MovieDBApp extends React.Component {
 			mode: 'popular',
 			lastSearch: '',
 			isLoading: true,
-			updateByFav: true
+			updateByFav: true,
+			underlay: false,
+			singleMovieId: 0
 		};
 	}
 
@@ -167,7 +170,16 @@ class MovieDBApp extends React.Component {
 	};
 
 	onTitleClick = (id) => {
-		console.log(id);
+		this.setState({
+			underlay: true,
+			singleMovieId: id
+		})
+	}
+
+	onUnderlayClick = () => {
+		this.setState({
+			underlay: false
+		})
 	}
 
 	render() {
@@ -196,6 +208,9 @@ class MovieDBApp extends React.Component {
 						onClick={this.goToHandler}
 					/>) : (null)
 				}
+				{(this.state.underlay) && (
+					<Underlay id={this.state.singleMovieId} onClick={this.onUnderlayClick}/>
+				)}
 			</div>
 		);
 	}
