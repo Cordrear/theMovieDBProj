@@ -23,11 +23,6 @@ const SingleMovie = (props) => {
 		});
 	convertedCountries = convertedCountries.slice(0, -2);
 
-	console.log(movie.genres);
-	console.log(movie.production_countries);
-	console.log(convertedGenres);
-	console.log(convertedCountries);
-
 	return(
 		<article className='single-movie' onClick={clickHandler}>
 			<section className='general-info'>
