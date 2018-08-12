@@ -6,7 +6,7 @@ const API = {
 		getById: (id) => {
 			return request('/movie/' + id + '?');
 		},
-		getRecomendations: (id) => {
+		getRecommendations: (id) => {
 			return request('/movie/' + id + '/recommendations?');
 		},
 		getPosterPath: (path) => {

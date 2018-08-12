@@ -21,7 +21,8 @@ class MovieDBApp extends React.Component {
 			isLoading: true,
 			updateByFav: true,
 			underlay: false,
-			singleMovie: {}
+			singleMovie: {},
+			recommendations: []
 		};
 	}
 
@@ -171,16 +172,30 @@ class MovieDBApp extends React.Component {
 
 	onTitleClick = async (id) => {
 		const movie = await this.getMovieById(id);
+		const recommendations = await this.getRecommendations(id);
 		this.setState({
 			underlay: true,
-			singleMovie: movie
-		})
+			singleMovie: movie,
+			recommendations: recommendations
+		});
 	}
 
 	onUnderlayClick = () => {
 		this.setState({
 			underlay: false
 		})
+	}
+
+	async getRecommendations(id) {
+		const recommendations = await API.movies.getRecommendations(id);
+		return recommendations.results.splice(0, 5);
+	}
+
+	onRecommendationClick = (id) => {
+		this.setState({
+			underlay: false
+		});
+		this.onTitleClick(id);
 	}
 
 	render() {
@@ -214,6 +229,8 @@ class MovieDBApp extends React.Component {
 						movie={this.state.singleMovie}
 						onClick={this.onUnderlayClick}
 						onFavClick={this.onFavClick}
+						recommendations={this.state.recommendations}
+						onRecommendationClick={this.onRecommendationClick}
 					/>
 				)}
 			</div>

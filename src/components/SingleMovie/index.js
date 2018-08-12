@@ -3,9 +3,10 @@ import './style.less';
 import Button from '../Button';
 import API from '../../helpers/API';
 import MyLocalStorage from '../../helpers/localStorage';
+import Recommendation from '../Recommendation';
 
 const SingleMovie = (props) => {
-	const { movie, onFavClick } = props;
+	const { movie, onFavClick, recommendations, onRecommendationClick } = props;
 
 	const clickHandler = (e) => {
 		e.stopPropagation();
@@ -22,7 +23,7 @@ const SingleMovie = (props) => {
 			convertedCountries += country.name + ', ';
 		});
 	convertedCountries = convertedCountries.slice(0, -2);
-
+	
 	return(
 		<article className='single-movie' onClick={clickHandler}>
 			<section className='general-info'>
@@ -78,7 +79,20 @@ const SingleMovie = (props) => {
 			<section className='overview'>
 				<p>{movie.overview}</p>
 			</section>
-			<section className='similar-movies'>
+			<section className='recommendations'>
+				<p className='recommendations-header'>Рекоммендации:</p>
+				<section className='recommended-movies'>
+					{
+						recommendations.map((item, index) =>
+							<Recommendation
+								className='recommended-movie'
+								key={index}
+								movie={item}
+								onClick={()=>{onRecommendationClick(item.id)}}
+							/>
+						)
+					}
+				</section>
 			</section>
 			
 		</article>
