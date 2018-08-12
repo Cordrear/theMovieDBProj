@@ -1,8 +1,6 @@
 import React from 'react';
 import './style.less';
-
 import Button from '../Button';
-
 import API from '../../helpers/API';
 
 const MovieListItem = (props) => {

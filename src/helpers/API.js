@@ -1,3 +1,5 @@
+import no_poster from '../img/no_poster.jpg';
+
 const API = {
 	movies: {
 		getPopular: (page = 1) => {
@@ -10,7 +12,7 @@ const API = {
 			return request('/movie/' + id + '/recommendations?');
 		},
 		getPosterPath: (path) => {
-			return (path) ? IMG_URL + path : 'https://store-images.s-microsoft.com/image/apps.10304.13510798886495884.b867e440-0644-43e9-8e4c-a70db68026b9.890841e5-da82-4036-a22b-faa80150d29e?mode=crop&q=90&h=300&w=200&format=jpg';
+			return (path) ? IMG_URL + path : no_poster;
 		},
 	},
 	getGenres: () => {
