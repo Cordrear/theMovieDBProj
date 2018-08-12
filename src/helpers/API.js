@@ -1,5 +1,9 @@
 import no_poster from '../img/no_poster.jpg';
 
+const API_KEY = 'd376b1449bc67048fe304e600c11fb06';
+const URL = 'https://api.themoviedb.org/3';
+const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+
 const API = {
 	movies: {
 		getPopular: (page = 1) => {
@@ -22,10 +26,6 @@ const API = {
 		return request('/search/movie?query=' + query + '&page=' + page + '&');
 	},
 };
-
-const API_KEY = 'd376b1449bc67048fe304e600c11fb06';
-const URL = 'https://api.themoviedb.org/3';
-const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 const request = (req) => {
 	return new Promise((resolve, reject) => {
