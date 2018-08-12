@@ -10,22 +10,22 @@ class MovieDBApp extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			movies: [],
-			allGenres: [],
-			page: 1,
-			total_pages: 1,
-			pageInputValue: 1,
-			searchInputValue: '',
-			mode: 'popular',
-			lastSearch: '',
-			isLoading: true,
-			updateByFav: true,
-			underlay: false,
-			singleMovie: {},
-			recommendations: []
+			movies: [], //текущие фильмы для отображение
+			allGenres: [], //все жанры
+			page: 1, //номер текущей страницы
+			total_pages: 1, //всего страниц
+			pageInputValue: 1, //значение input'a страницы
+			searchInputValue: '', //значение input'a поиска
+			mode: 'popular', //текущий режим отображение (popular / search / fav)
+			lastSearch: '', //последний поиск (для пагинации)
+			isLoading: true, //отображение лоадера
+			underlay: false, //отображение "подкладки" при просмотре одного фильма
+			singleMovie: {}, //фильм для подробного отображение
+			recommendations: [] //рекомендации для просматриваемого фильма
 		};
 	}
 
+	//загрузка популярных фильмов при старте
 	async componentDidMount() {
 		if(MyLocalStorage.isEmpty('fav')) {
 			MyLocalStorage.set('fav', new Array());
@@ -33,6 +33,7 @@ class MovieDBApp extends React.Component {
 		this.getPopularMovies();
 	}
 
+	//получение популярных фильмов (20 фильмов на странице)
 	async getPopularMovies(pageNumber = 1) {
 		this.setState({isLoading: true});
 
@@ -53,6 +54,7 @@ class MovieDBApp extends React.Component {
 		});
 	}
 
+	//выполнить поиск фильмов по запросу query (20 фильмов на странице)
 	async doMoviesSearch(query, pageNumber = 1) {
 		this.setState({isLoading: true});
 
@@ -73,6 +75,7 @@ class MovieDBApp extends React.Component {
 		});
 	}
 
+	//выполнить переход на страницу с номеров goTo
 	goToHandler = (e) => {
 		let goTo = this.state.pageInputValue;
 		if (goTo > this.state.total_pages) {
@@ -95,6 +98,7 @@ class MovieDBApp extends React.Component {
 		window.scrollTo(0, 0);
 	};
 
+	//обработчик нажатия на кнопку поиска
 	searchHandler = () => {
 		const query = this.state.searchInputValue;
 		if (query){
@@ -118,18 +122,21 @@ class MovieDBApp extends React.Component {
 		}
 	};
 
+	//отслеживание изменений в input'e пагинации
 	onPageInputChange = (e) => {
 		this.setState({
 			pageInputValue: e.target.value
 		});
 	};
 
+	//отслеживание изменений в input'e поиска
 	onSearchInputChange = (e) => {
 		this.setState({
 			searchInputValue: e.target.value
 		});
 	};
 
+	//клик на лого переводит в "начальное" состояние (1я страница популярного)
 	onLogoClick = () => {
 		this.getPopularMovies();
 		this.setState({
@@ -139,16 +146,19 @@ class MovieDBApp extends React.Component {
 		});
 	};
 
+	//добавление/удаление фильма из избранного
 	onFavClick = (id) => {
 		MyLocalStorage.toggleInArray('fav', id);
 		this.setState(this.state);
 	};
 
+	//получение подробной информации по фильму
 	async getMovieById(id) {
 		const movie = await API.movies.getById(id);
 		return movie;
 	};
 
+	//отображение избранных фильмов
 	showFavMovies = () => {
 		const arr = MyLocalStorage.get('fav');
 		if (arr == null || arr == '') {
@@ -170,6 +180,7 @@ class MovieDBApp extends React.Component {
 		};
 	};
 
+	//открытие подробной информации о фильме при клике на заголовок
 	onTitleClick = async (id) => {
 		const movie = await this.getMovieById(id);
 		const recommendations = await this.getRecommendations(id);
@@ -180,17 +191,20 @@ class MovieDBApp extends React.Component {
 		});
 	}
 
+	//закрытие подробной информации о фильме при клике на "подложку"
 	onUnderlayClick = () => {
 		this.setState({
 			underlay: false
 		})
 	}
 
+	//получение рекомендуемых фильмов
 	async getRecommendations(id) {
 		const recommendations = await API.movies.getRecommendations(id);
 		return recommendations.results.splice(0, 5);
 	}
 
+	//обработка клика по фильму из списка рекомендаций
 	onRecommendationClick = (id) => {
 		this.setState({
 			underlay: false
