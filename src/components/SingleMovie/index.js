@@ -33,35 +33,35 @@ const SingleMovie = (props) => {
 					alt={movie.title}
 				/>
 				<div className='info'>
-					<p className='title'>{movie.title}</p>
+					<p className='title'>{movie.title ||'Нет данных'}</p>
 					<div className='info-wrapper'>
 						<div className='info-item'>
 							<span className='info-type'>Оригинальное название:</span>
-							<span className='info-value'>{movie.original_title}</span>
+							<span className='info-value'>{movie.original_title || 'Нет данных'}</span>
 						</div>
 						<div className='info-item'>
 							<span className='info-type'>Дата выхода:</span>
-							<span className='info-value'>{movie.release_date}</span>
+							<span className='info-value'>{movie.release_date || 'Нет данных'}</span>
 						</div>
 						<div className='info-item'>
 							<span className='info-type'>Страны:</span>
-							<span className='info-value'>{convertedCountries}</span>
+							<span className='info-value'>{convertedCountries || 'Нет данных'}</span>
 						</div>
 						<div className='info-item'>
 							<span className='info-type'>Жанры:</span>
-							<span className='info-value'>{convertedGenres}</span>
+							<span className='info-value'>{convertedGenres || 'Нет данных'}</span>
 						</div>
 						<div className='info-item'>
-							<span className='info-type'>Продолжительность:</span>
-							<span className='info-value'>{movie.runtime}</span>
+							<span className='info-type'>Длительность (мин.):</span>
+							<span className='info-value'>{movie.runtime || 'Нет данных'}</span>
 						</div>
 						<div className='info-item'>
-							<span className='info-type'>Бюджет:</span>
-							<span className='info-value'>${movie.budget}</span>
+							<span className='info-type'>Бюджет ($):</span>
+							<span className='info-value'>{movie.budget || 'Нет данных'}</span>
 						</div>
 						<div className='info-item'>
-							<span className='info-type'>Сборы в мире:</span>
-							<span className='info-value'>${movie.revenue}</span>
+							<span className='info-type'>Сборы в мире ($):</span>
+							<span className='info-value'>{movie.revenue || 'Нет данных'}</span>
 						</div>
 						<div className='info-item'>
 							<span className='info-type'>Оценка:</span>
