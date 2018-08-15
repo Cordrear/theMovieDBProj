@@ -8,6 +8,7 @@ const Recommendation = (props) => {
 			<img 
 				src={API.movies.getPosterPath(props.movie.poster_path)}
 				alt={props.movie.title}
+				title={props.movie.title}
 				onClick={props.onClick}
 			/>
 		</article>
