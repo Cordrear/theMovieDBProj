@@ -76,10 +76,10 @@ const SingleMovie = (props) => {
 					inFav={MyLocalStorage.isInArray('fav', movie.id)}
 				/>
 			</section>
-			<section className='overview'>
+			{(movie.overview) && (<section className='overview'>
 				<p>{movie.overview}</p>
-			</section>
-			<section className='recommendations'>
+			</section>)}
+			{(!!recommendations.length) && (<section className='recommendations'>
 				<p className='recommendations-header'>Рекоммендации:</p>
 				<section className='recommended-movies'>
 					{
@@ -93,7 +93,7 @@ const SingleMovie = (props) => {
 						)
 					}
 				</section>
-			</section>
+			</section>)}
 			
 		</article>
 	)
