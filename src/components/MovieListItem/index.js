@@ -25,6 +25,7 @@ const MovieListItem = (props) => {
 				className="img"
 				src={API.movies.getPosterPath(movie.poster_path)}
 				alt={movie.title}
+				onClick={onTitleClick}
 			/>
 			<div className="info">
 				<a 
