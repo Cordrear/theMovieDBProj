@@ -162,7 +162,10 @@ class MovieDBApp extends React.Component {
 	showFavMovies = () => {
 		const arr = MyLocalStorage.get('fav');
 		if (arr == null || arr == '') {
-			alert('В избранном пусто');
+			//alert('В избранном пусто');
+			this.setState({
+				movies: []
+			});
 		} else {
 			this.setState({
 				isLoading: true,
