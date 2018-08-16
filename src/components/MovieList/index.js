@@ -12,6 +12,7 @@ import Pagination from '../Pagination';
 const MovieList = (props) => {
 	return (
 		<div className='movie-list'>
+			{(!props.movies.length) ? (<p>Ничего не найдено</p>) : null}
 			{!props.isLoading ? (
 			props.movies.map((item, index) =>
 				<MovieListItem
