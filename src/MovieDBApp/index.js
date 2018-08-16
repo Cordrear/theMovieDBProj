@@ -214,7 +214,7 @@ class MovieDBApp extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className='App'>
 				<Header
 					onSearchClick={this.searchHandler}
 					onChange={this.onSearchInputChange}
