@@ -24,7 +24,7 @@ const MovieList = (props) => {
                 />)
 			) : (
 			<div className='is-loading'>
-				<p>Loading...</p>
+				<p>Загрузка...</p>
 			</div>
 			)}
 		</div>
