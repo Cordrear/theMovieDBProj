@@ -7,11 +7,13 @@ const MovieListItem = (props) => {
 	const { movie, allGenres, onFavClick, inFav, onTitleClick } = props;
 
 	let convertedGenres = '';
+	//так приходит через getPopular
 	if(movie.genre_ids) {
 		allGenres.forEach((item) => {
 			if (movie.genre_ids.indexOf(item.id) != -1) convertedGenres += item.name + ', ';
 		});
 	}
+	//так приходит через getById
 	if(movie.genres) {
 		movie.genres.forEach((genre) => {
 			convertedGenres += genre.name + ', ';
