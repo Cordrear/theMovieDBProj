@@ -124,9 +124,12 @@ class MovieDBApp extends React.Component {
 
 	//отслеживание изменений в input'e пагинации
 	onPageInputChange = (e) => {
-		this.setState({
-			pageInputValue: e.target.value
-		});
+		const value = e.target.value;
+		if (value == parseInt(value) || value === '') {
+			this.setState({
+				pageInputValue: value
+			});
+		};
 	};
 
 	//отслеживание изменений в input'e поиска

@@ -17,7 +17,7 @@ const Pagination = (props) => {
 			<div>
 				<input
 					id="pageInput"
-					type="number"
+					
 					min="1"
 					max={total_pages}
 					value={pageInputValue}
