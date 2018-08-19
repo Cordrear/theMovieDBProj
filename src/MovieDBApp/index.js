@@ -5,6 +5,7 @@ import Pagination from '../components/Pagination';
 import MovieList from '../components/MovieList';
 import Header from '../components/Header';
 import Underlay from '../components/Underlay';
+import SingleMovie from '../components/SingleMovie';
 
 class MovieDBApp extends React.Component {
 	constructor(props) {
@@ -263,13 +264,14 @@ class MovieDBApp extends React.Component {
 					/>) : (null)
 				}
 				{(this.state.underlay) && (
-					<Underlay
-						movie={this.state.singleMovie}
-						onClick={this.onUnderlayClick}
-						onFavClick={this.onFavClick}
-						recommendations={this.state.recommendations}
-						onRecommendationClick={this.onRecommendationClick}
-					/>
+					<Underlay onClick={this.onUnderlayClick}>
+						<SingleMovie 
+							movie={this.state.singleMovie}
+							onFavClick={this.onFavClick}
+							recommendations={this.state.recommendations}
+							onRecommendationClick={this.onRecommendationClick}
+						/>
+					</Underlay>
 				)}
 			</div>
 		);
