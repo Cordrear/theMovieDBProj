@@ -12,9 +12,17 @@ const Pagination = (props) => {
 		onClick
 	} = props;
 
+	const toFirstPage = () => {};
+	const toPrevPage = () => {};
+	const toNextPage = () => {};
+	const toLastPage = () => {};
+
+
 	return (
 		<section className="pagination">
 			<div>
+				<Button text='<<' onClick={()=>{onClick('first')}} />
+				<Button text='<' onClick={()=>{onClick('prev')}} />
 				<input
 					id="pageInput"
 					
@@ -29,8 +37,10 @@ const Pagination = (props) => {
 							}
 						}
 					} />
-				<Button text="Перейти" onClick={onClick} />
+				<Button text='>' onClick={()=>{onClick('next')}} />
+				<Button text='>>' onClick={()=>{onClick('last')}} />
 			</div>
+			<Button text="Перейти" onClick={onClick} />
 			<div>
 				<p>Страница: {page} из {total_pages}</p>
 			</div>

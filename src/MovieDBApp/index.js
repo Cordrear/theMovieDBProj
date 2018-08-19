@@ -51,6 +51,7 @@ class MovieDBApp extends React.Component {
 			allGenres,
 			page,
 			total_pages,
+			pageInputValue: pageNumber
 		});
 	}
 
@@ -71,13 +72,30 @@ class MovieDBApp extends React.Component {
 			movies,
 			allGenres,
 			page,
-			total_pages
+			total_pages,
+			pageInputValue: pageNumber
 		});
 	}
 
 	//выполнить переход на страницу с номеров goTo
-	goToHandler = (e) => {
+	goToHandler = (step) => {
 		let goTo = this.state.pageInputValue;
+		switch (step) {
+			case 'first':
+				goTo = 1;
+				break;
+			case 'prev':
+				--goTo;
+				break;
+			case 'next':
+				++goTo;
+				break;
+			case 'last':
+				goTo = this.state.total_pages;
+				break;
+			default:
+				break;
+		}
 		if (goTo > this.state.total_pages) {
 			goTo = this.state.total_pages;
 		};
