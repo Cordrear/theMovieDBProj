@@ -20,7 +20,7 @@ const Pagination = (props) => {
 
 	return (
 		<section className="pagination">
-			<div>
+			<div className='nav'>
 				<Button text='<<' onClick={()=>{onClick('first')}} />
 				<Button text='<' onClick={()=>{onClick('prev')}} />
 				<input
