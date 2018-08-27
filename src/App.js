@@ -14,7 +14,7 @@ class MovieDBApp extends React.Component {
 			movies: [], //текущие фильмы для отображение
 			allGenres: [], //все жанры
 			page: 1, //номер текущей страницы
-			total_pages: 1, //всего страниц
+			totalPages: 1, //всего страниц
 			pageInputValue: 1, //значение input'a страницы
 			searchInputValue: '', //значение input'a поиска
 			mode: 'popular', //текущий режим отображение (popular / search / fav)
@@ -45,12 +45,12 @@ class MovieDBApp extends React.Component {
 		const allGenres = dataAllGenres.genres;
 
 		const page = dataMovies.page;
-		const total_pages = dataMovies.total_pages;
+		const totalPages = dataMovies.total_pages;
 		this.setState({
 			movies,
 			allGenres,
 			page,
-			total_pages,
+			totalPages,
 			pageInputValue: pageNumber,
 			isLoading: false
 		});
@@ -67,12 +67,12 @@ class MovieDBApp extends React.Component {
 		const allGenres = dataAllGenres.genres;
 
 		const page = dataMovies.page;
-		const total_pages = dataMovies.total_pages;
+		const totalPages = dataMovies.total_pages;
 		this.setState({
 			movies,
 			allGenres,
 			page,
-			total_pages,
+			totalPages,
 			pageInputValue: pageNumber,
 			isLoading: false
 		});
@@ -92,13 +92,13 @@ class MovieDBApp extends React.Component {
 				++goTo;
 				break;
 			case 'last':
-				goTo = this.state.total_pages;
+				goTo = this.state.totalPages;
 				break;
 			default:
 				break;
 		}
-		if (goTo > this.state.total_pages) {
-			goTo = this.state.total_pages;
+		if (goTo > this.state.totalPages) {
+			goTo = this.state.totalPages;
 		};
 		if (goTo < 1) {
 			goTo = 1;
@@ -253,7 +253,7 @@ class MovieDBApp extends React.Component {
 				/>	
 				{(this.state.mode != 'fav') ? (
 					<Pagination
-						total_pages={this.state.total_pages}
+						totalPages={this.state.totalPages}
 						page={this.state.page} 
 						pageInputValue={this.state.pageInputValue}
 						onChange={this.onPageInputChange} 

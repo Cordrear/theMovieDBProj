@@ -5,7 +5,7 @@ import Button from '../Button';
 const Pagination = (props) => {
 
 	const {
-		total_pages,
+		totalPages,
 		page,
 		pageInputValue,
 		onChange,
@@ -20,7 +20,7 @@ const Pagination = (props) => {
 				<input
 					id="pageInput"
 					min="1"
-					max={total_pages}
+					max={totalPages}
 					value={pageInputValue}
 					onChange={onChange}
 					onKeyUp={
@@ -35,7 +35,7 @@ const Pagination = (props) => {
 			</div>
 			<Button text="Перейти" onClick={onClick} />
 			<div>
-				<p>Страница: {page} из {total_pages}</p>
+				<p>Страница: {page} из {totalPages}</p>
 			</div>
 		</section>
 	);
