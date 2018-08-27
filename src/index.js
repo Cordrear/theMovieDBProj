@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-
-import MovieDBApp from './MovieDBApp';
+import MovieDBApp from './App.js';
 
 import './style.less';
 
