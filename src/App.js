@@ -110,9 +110,6 @@ class MovieDBApp extends React.Component {
 			case 'search':
 				this.doMoviesSearch(this.state.searchInputValue, goTo);
 				break;
-			case 'fav':
-				//nothing
-				break;
 		}
 		window.scrollTo(0, 0);
 	};
