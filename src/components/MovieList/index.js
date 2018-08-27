@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.less';
-
 import MovieListItem from '../MovieListItem';
-
 import API from '../../helpers/API';
 import MyLocalStorage from '../../helpers/localStorage';
-
 import Pagination from '../Pagination';
 
 const MovieList = (props) => {

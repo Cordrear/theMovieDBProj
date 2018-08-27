@@ -3,7 +3,7 @@ import './style.less';
 import Button from '../Button';
 
 const Pagination = (props) => {
-	
+
 	const {
 		total_pages,
 		page,
@@ -19,7 +19,6 @@ const Pagination = (props) => {
 				<Button text='<' onClick={()=>{onClick('prev')}} />
 				<input
 					id="pageInput"
-					
 					min="1"
 					max={total_pages}
 					value={pageInputValue}

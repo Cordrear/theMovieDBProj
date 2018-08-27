@@ -44,7 +44,6 @@ class MovieDBApp extends React.Component {
 		const dataAllGenres = await API.getGenres();
 		const allGenres = dataAllGenres.genres;
 
-		this.setState({isLoading: false});
 		const page = dataMovies.page;
 		const total_pages = dataMovies.total_pages;
 		this.setState({
@@ -52,7 +51,8 @@ class MovieDBApp extends React.Component {
 			allGenres,
 			page,
 			total_pages,
-			pageInputValue: pageNumber
+			pageInputValue: pageNumber,
+			isLoading: false
 		});
 	}
 
@@ -66,7 +66,6 @@ class MovieDBApp extends React.Component {
 		const dataAllGenres = await API.getGenres();
 		const allGenres = dataAllGenres.genres;
 
-		this.setState({isLoading: false});
 		const page = dataMovies.page;
 		const total_pages = dataMovies.total_pages;
 		this.setState({
@@ -74,7 +73,8 @@ class MovieDBApp extends React.Component {
 			allGenres,
 			page,
 			total_pages,
-			pageInputValue: pageNumber
+			pageInputValue: pageNumber,
+			isLoading: false
 		});
 	}
 

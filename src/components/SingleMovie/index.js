@@ -94,7 +94,6 @@ const SingleMovie = (props) => {
 					}
 				</section>
 			</section>)}
-			
 		</article>
 	)
 }
