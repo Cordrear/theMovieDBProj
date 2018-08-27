@@ -1,6 +1,16 @@
 .recommended-movie {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 225px;
+	.loading {
+		position: absolute;
+		z-index: 1;
+	}
 	img {
 		width: 150px;
 		cursor: pointer;
+		position: relative;
+		z-index: 2;
 	}
 }
