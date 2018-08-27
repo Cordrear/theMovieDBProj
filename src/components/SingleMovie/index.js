@@ -86,7 +86,7 @@ const SingleMovie = (props) => {
 						recommendations.map((item, index) =>
 							<Recommendation
 								className='recommended-movie'
-								key={index}
+								key={item.id}
 								movie={item}
 								onClick={()=>{onRecommendationClick(item.id)}}
 							/>

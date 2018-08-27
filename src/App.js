@@ -228,9 +228,9 @@ class MovieDBApp extends React.Component {
 
 	//обработка клика по фильму из списка рекомендаций
 	onRecommendationClick = (id) => {
-		this.setState({
+		/*this.setState({
 			underlay: false
-		});
+		});*/
 		this.onTitleClick(id);
 	}
 
