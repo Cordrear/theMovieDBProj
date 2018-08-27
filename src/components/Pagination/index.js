@@ -3,7 +3,7 @@ import './style.less';
 import Button from '../Button';
 
 const Pagination = (props) => {
-
+	
 	const {
 		total_pages,
 		page,
@@ -11,12 +11,6 @@ const Pagination = (props) => {
 		onChange,
 		onClick
 	} = props;
-
-	const toFirstPage = () => {};
-	const toPrevPage = () => {};
-	const toNextPage = () => {};
-	const toLastPage = () => {};
-
 
 	return (
 		<section className="pagination">
