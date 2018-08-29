@@ -7,7 +7,9 @@ const Poster = (props) => {
 	const {
 		src,
 		alt,
-		onClick
+		onClick,
+		width,
+		height
 	} = props;
 	return (
 		<img
@@ -15,6 +17,8 @@ const Poster = (props) => {
 			src={API.movies.getPosterPath(src) || noPoster}
 			alt={alt}
 			onClick={onClick}
+			width={width || '200px'}
+			height={height || '300px'}
 		/>
 	)
 }

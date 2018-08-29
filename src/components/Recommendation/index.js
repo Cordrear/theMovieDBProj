@@ -1,16 +1,17 @@
 import React from 'react';
 import './style.less';
 import API from '../../helpers/API';
+import Poster from '../Poster';
 
 const Recommendation = (props) => {
 	return(
 		<article className='recommended-movie'>
 			<p className='loading'>Загрузка...</p>
-			<img 
-				src={API.movies.getPosterPath(props.movie.poster_path)}
-				alt={props.movie.title}
+			<Poster
+				src={props.movie.poster_path}
 				title={props.movie.title}
 				onClick={props.onClick}
+				height='225px'
 			/>
 		</article>
 	)
