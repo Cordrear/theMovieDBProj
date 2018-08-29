@@ -1,12 +1,11 @@
 import React from 'react';
-import './style.less';
-import API from '../helpers/API';
-import MyLocalStorage from '../helpers/localStorage';
-import Pagination from '../components/Pagination';
-import MovieList from '../components/MovieList';
-import Header from '../components/Header';
-import Underlay from '../components/Underlay';
-import SingleMovie from '../components/SingleMovie';
+import API from './helpers/API';
+import MyLocalStorage from './helpers/localStorage';
+import Pagination from './components/Pagination';
+import MovieList from './components/MovieList';
+import Header from './components/Header';
+import Underlay from './components/Underlay';
+import SingleMovie from './components/SingleMovie';
 
 class MovieDBApp extends React.Component {
 	constructor(props) {
