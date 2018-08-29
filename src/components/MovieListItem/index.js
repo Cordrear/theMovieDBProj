@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.less';
 import Button from '../Button';
+import Poster from '../Poster';
 import API from '../../helpers/API';
 
 const MovieListItem = (props) => {
@@ -23,9 +24,8 @@ const MovieListItem = (props) => {
 
 	return (
 		<article className="movie-list-item">
-			<img
-				className="img"
-				src={API.movies.getPosterPath(movie.poster_path)}
+			<Poster
+				src={movie.poster_path}
 				alt={movie.title}
 				onClick={onTitleClick}
 			/>
