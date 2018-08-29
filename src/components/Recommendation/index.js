@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.less';
-import API from '../../helpers/API';
 import Poster from '../Poster';
 
 const Recommendation = (props) => {

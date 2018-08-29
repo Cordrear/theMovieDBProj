@@ -2,7 +2,6 @@ import React from 'react';
 import './style.less';
 import Button from '../Button';
 import Poster from '../Poster';
-import API from '../../helpers/API';
 
 const MovieListItem = (props) => {
 	const { movie, allGenres, onFavClick, inFav, onTitleClick } = props;
