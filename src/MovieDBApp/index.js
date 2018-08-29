@@ -1,11 +1,12 @@
 import React from 'react';
-import API from './helpers/API';
-import MyLocalStorage from './helpers/localStorage';
-import Pagination from './components/Pagination';
-import MovieList from './components/MovieList';
-import Header from './components/Header';
-import Underlay from './components/Underlay';
-import SingleMovie from './components/SingleMovie';
+import './style.less';
+import API from '../helpers/API';
+import MyLocalStorage from '../helpers/localStorage';
+import Pagination from '../components/Pagination';
+import MovieList from '../components/MovieList';
+import Header from '../components/Header';
+import Underlay from '../components/Underlay';
+import SingleMovie from '../components/SingleMovie';
 
 class MovieDBApp extends React.Component {
 	constructor(props) {
@@ -236,7 +237,7 @@ class MovieDBApp extends React.Component {
 
 	render() {
 		return (
-			<div className='App'>
+			<div className='app'>
 				<Header
 					onSearchClick={this.searchHandler}
 					onChange={this.onSearchInputChange}
