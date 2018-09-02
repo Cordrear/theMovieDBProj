@@ -206,6 +206,7 @@ class MovieDBApp extends React.Component {
 	onTitleClick = async (id) => {
 		const movie = await this.getMovieById(id);
 		const recommendations = await this.getRecommendations(id);
+		document.body.style.overflow = 'hidden';
 		this.setState({
 			underlay: true,
 			singleMovie: movie,
@@ -215,6 +216,7 @@ class MovieDBApp extends React.Component {
 
 	//закрытие подробной информации о фильме при клике на "подложку"
 	onUnderlayClick = () => {
+		document.body.style.overflow = 'auto';
 		this.setState({
 			underlay: false
 		})
